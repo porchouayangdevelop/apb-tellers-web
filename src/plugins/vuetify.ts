@@ -16,6 +16,11 @@ import {md1,md2,md3} from 'vuetify/blueprints'
 export default createVuetify({
   blueprint:md2,
   theme: {
-    // defaultTheme: 'light',
+    defaultTheme: 'light',
+    themes: {
+      dark:{
+
+      }
+    }
   },
 })

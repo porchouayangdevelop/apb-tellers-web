@@ -12,10 +12,17 @@ const {} = appStore(); //actions
   <div v-if="currentView === 'dashboard'">
     <stats/>
     <RecentActivity/>
+  </div>
+  <div v-else-if="currentView === 'analytics'">
+    <Analytics/>
+  </div>
+  <div v-else-if="currentView === 'users'">
     <User/>
-    <Analysis/>
+  </div>
+  <div v-else-if="currentView === 'settings'">
     <Setting/>
   </div>
+  <CarouselFeature/>
 </v-container>
 </template>
 

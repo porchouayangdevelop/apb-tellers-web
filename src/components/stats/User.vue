@@ -2,9 +2,18 @@
 import type {User} from "@/types";
 import {storeToRefs} from "pinia";
 import {appStore} from "@/stores/appStore.ts";
+import {useRouteGuard} from "@/composables/useRouteGuard.ts";
+import {useAdminProtection} from "@/composables/usePageProtection.ts";
 
 const {drawer, isRails, currentView} = storeToRefs(appStore()); //state
 const {} = appStore(); //actions
+
+// useRouteGuard({
+//   requiresAuth: true,
+//   roles: ['admin'],
+//   permissions: ['user.read']
+// })
+useAdminProtection();
 
 const userHeaders = [
   {title: 'Avatar', key: 'avatar', sortable: false},
@@ -49,7 +58,6 @@ const user: User[] = [
 </script>
 
 <template>
-  <!-- Users View -->
   <div v-if="currentView === 'users'">
     <v-row>
       <v-col cols="12">
@@ -63,17 +71,20 @@ const user: User[] = [
           </v-card-title>
           <v-card-text>
             <v-data-table
+              flat
+
               :headers="userHeaders"
-              :items="users"
+              :items="user"
               :items-per-page="10"
-              class="elevation-1"
+              class="elevation-0"
+
             >
-              <template v-slot:item.avatar="{ item }">
+              <template #item.avatar="{ item }">
                 <v-avatar size="32" class="ma-2">
                   <v-img :src="item.avatar"></v-img>
                 </v-avatar>
               </template>
-              <template v-slot:item.status="{ item }">
+              <template #item.status="{ item }">
                 <v-chip
                   :color="item.status === 'Active' ? 'success' : 'error'"
                   text-color="white"

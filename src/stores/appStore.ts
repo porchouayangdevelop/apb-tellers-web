@@ -3,7 +3,7 @@
 export const appStore =  defineStore('appStore',{
   state: () => ({
     sidebarOpen: false,
-    drawer: false,
+    drawer: true,
     isDarkMode: false,
     isMobile: false,
     isLoading: false,

@@ -1,0 +1,67 @@
+interface User {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  roles?: string[];
+  permissions?: string[];
+  avatar?: string;
+  status: 'active' | 'inactive' | 'banned' | 'suspended';
+  lastLogin?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+interface LoginCredentials {
+  email: string;
+  password: string;
+  remember?: boolean;
+}
+
+interface AuthResponse {
+  user: User;
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: number;
+}
+
+interface RefreshTokenResponse {
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: number;
+}
+
+interface AuthState {
+  user: User | null;
+  accessToken: string | null;
+  refreshToken: string | null;
+  expiresIn?: number | null;
+  loading: boolean;
+  isAuthenticated: boolean;
+  permissions: string[];
+  roles: string[];
+  error?: string | null;
+}
+
+interface RoutePermission {
+  roles?: string[]
+  permissions?: string[]
+  requireAuth?: boolean
+}
+
+interface MenuPermission extends RoutePermission {
+  title: string
+  icon: string
+  value: string
+  children?: MenuPermission[]
+}
+
+export type  {
+  User,
+  LoginCredentials,
+  AuthResponse,
+  RefreshTokenResponse,
+  AuthState,
+  RoutePermission,
+  MenuPermission
+}

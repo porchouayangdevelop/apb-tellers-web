@@ -103,7 +103,7 @@ const engagementChartOptions = ref({
         </v-card>
       </v-col>
       <v-col cols="12" md="6">
-        <v-card elevation="2">
+        <v-card elevation="0" flat variant="flat">
           <v-card-title>User Engagement</v-card-title>
           <v-card-text>
             <apexchart

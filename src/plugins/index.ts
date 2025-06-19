@@ -8,6 +8,7 @@
 import vuetify from './vuetify'
 import pinia from '../stores'
 import router from '../router'
+import './axios.ts'
 
 // Types
 import type { App } from 'vue'
