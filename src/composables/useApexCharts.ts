@@ -1,6 +1,4 @@
 import type {ChartConfig} from "@/types";
-
-
 export const useApexCharts = () => {
   const createAreaChart = (
     data: number[],
